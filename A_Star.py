@@ -30,7 +30,6 @@ class a_star:
         valor_mínimo = sys.maxsize * 2 + 1
 
         for n in self.nodos_abiertos:
-            print(n.posicion, n.f)
             if n.f < valor_mínimo:
                 valor_mínimo = n.f
                 output = n
@@ -54,7 +53,6 @@ class a_star:
         camino_reves = []
         siguiente_nodo = self.final
         while siguiente_nodo != None:
-            print(siguiente_nodo.posicion)
             camino_reves.append(siguiente_nodo.posicion)
             siguiente_nodo = siguiente_nodo.padre
         camino_reves.reverse()
@@ -66,10 +64,6 @@ class a_star:
             self.nodos_cerrados.append(n_actual)
             if n_actual == self.final:
                 return self.devolver_camino()
-            print("Abiertos: ",self.nodos_abiertos)
-            print("Cerrados: ",self.nodos_cerrados)
-            print("N Actual: ", n_actual.posicion)
-            print("Hijos: ",self.hijos(n_actual))
             for c in self.hijos(n_actual):
                 if c not in self.nodos_cerrados:
                     if c not in self.nodos_abiertos:
